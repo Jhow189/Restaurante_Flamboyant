@@ -1,0 +1,78 @@
+﻿@model Flamboyant.Models.ModelCardapio
+@{
+    ViewBag.Title = "CadCardapio";
+}
+<style>
+    .tudo {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5em;
+    }
+
+    input[type=text], input[type=password] {
+        background: transparent;
+        justify-content:center;
+        align-items:center;
+        width:50%;
+        border-width: 0pt;
+        border-bottom-width: 2pt;
+        border-image-slice: 1;
+        border-image-source: var(--linear-red);
+        padding: 2px 5px;
+        position: absolute;
+        outline: none;
+    }
+
+    label {
+        position: relative;
+    }
+
+</style>
+<h2 style="text-align:center;">Cadastrar Produto</h2>
+<br/>
+
+<div class="tudo">
+    <div class="forms">
+
+        @using (Html.BeginForm("CadCardapio", "Cardapio", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.LabelFor(m => m.NomeCardapio)
+            <br />
+            @Html.EditorFor(m => m.NomeCardapio)
+            <br />
+            <br />
+            <br />
+            @Html.LabelFor(m => m.DesCardapio)
+            <br />
+            @Html.EditorFor(m => m.DesCardapio)
+            <br />
+            <br />
+            <br />
+            @Html.LabelFor(m => m.VlCardapio)
+            <br />
+            @Html.EditorFor(m => m.VlCardapio)
+            <br />
+            <br />
+            <br />
+            <div class="form-group center">
+                <div>
+                    <label class="control-label col-md-2" for="file">Foto</label>
+                </div>
+                <div class="col-md-10">
+                    <br />
+                    <input type="file" name="file" id="file" /> <br />
+                </div>
+            </div>
+            <br />
+            <br />
+            <div>
+                <input type="submit" value="Cadastrar" class="btn-green" style=" padding: 8px; inline-size: max-content;" />
+                &nbsp;&nbsp;
+                @Html.ActionLink("Voltar", "ListarCardapio", "Cardapio", null, new { @class = "btn-red", @style = " padding: 8px; inline-size: max-content;" })
+            </div>
+            <br />
+        }
+    </div>
+</div>
